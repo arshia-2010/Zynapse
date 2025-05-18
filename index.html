@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +18,12 @@
       <li><a href="#showcase">Showcase</a></li>
       <li><a href="#footer">Contact</a></li>
     </ul>
+    <button id="theme-toggle" aria-label="Toggle Theme">🌓</button>
   </nav>
 
   <!-- Hero Section -->
   <section id="hero">
-    <h1 class="headline"><span class="word">Animate</span> <span class="word">Anything</span></h1>
+    <h1 class="headline"><span id="typed-text"></span><span class="cursor">|</span></h1>
     <p class="subhead">Experience the power of motion with ZYNAPSE</p>
   </section>
 
@@ -57,16 +57,28 @@
 
   <!-- Scripts -->
   <script>
-    // Animate headline words
-    gsap.from(".word", {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      ease: "power4.out",
-      stagger: 0.3
-    });
+    // Typing Animation
+    const words = ["Animate", "Anything", "With", "ZYNAPSE"];
+    let i = 0, j = 0, isDeleting = false;
+    const typedText = document.getElementById("typed-text");
 
-    // Scroll-triggered animations
+    function type() {
+      const current = words[i];
+      typedText.textContent = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
+      if (!isDeleting && j === current.length + 1) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+        setTimeout(type, 200);
+      } else {
+        setTimeout(type, isDeleting ? 100 : 150);
+      }
+    }
+    type();
+
+    // Feature Animations
     gsap.utils.toArray(".feature").forEach(section => {
       gsap.from(section, {
         scrollTrigger: {
@@ -80,7 +92,7 @@
       });
     });
 
-    // Hover card effects
+    // Card Hover Effects
     document.querySelectorAll(".card").forEach(card => {
       card.addEventListener("mouseenter", () => {
         gsap.to(card, { scale: 1.05, duration: 0.3 });
@@ -88,6 +100,21 @@
       card.addEventListener("mouseleave", () => {
         gsap.to(card, { scale: 1, duration: 0.3 });
       });
+    });
+
+    // Theme Toggle with Persistence
+    const toggle = document.getElementById("theme-toggle");
+    const prefersLight = localStorage.getItem("theme") === "light";
+
+    if (prefersLight) {
+      document.body.classList.add("light-mode");
+      toggle.textContent = "🌞";
+    }
+
+    toggle.addEventListener("click", () => {
+      const isLight = document.body.classList.toggle("light-mode");
+      toggle.textContent = isLight ? "🌞" : "🌓";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     });
   </script>
 </body>
