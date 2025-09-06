@@ -1,1 +1,2 @@
-Zynapse – A responsive website clone built using HTML, CSS, JavaScript, and GSAP animations. I focused on smooth UI transitions across devices and structuring layouts for efficient animation control. (A work-in-progress where the challenge was handling breakpoints and animation timing.)
+Zynapse is a GSAP-powered animated website project I built to push myself beyond static designs. The idea was to replicate the smooth, interactive feel of gsap.com using HTML, CSS, JavaScript, and GSAP animations. The main challenge was balancing heavy animations with responsiveness, so the site still feels fluid on any screen.
+👉 It highlights my interest in UI/UX + performance-driven coding.
