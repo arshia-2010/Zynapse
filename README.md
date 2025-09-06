@@ -1,1 +1,1 @@
-# Zynapse
+Zynapse – A responsive website clone built using HTML, CSS, JavaScript, and GSAP animations. I focused on smooth UI transitions across devices and structuring layouts for efficient animation control. (A work-in-progress where the challenge was handling breakpoints and animation timing.)
