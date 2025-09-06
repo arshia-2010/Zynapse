@@ -1,4 +1,4 @@
-/* Reset & Base Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -66,6 +66,8 @@ body.light-mode footer {
   display: inline-block;
   animation: blink 0.8s infinite;
 }
+
+/*blinking animation of the theme headings*/
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -104,10 +106,10 @@ nav {
 #theme-toggle {
   background: transparent;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   cursor: pointer;
   color: inherit;
-  margin-left: 1rem;
+  margin-left: -1rem; /*spacing of the moon*/
 }
 
 /* Hero Section */
